@@ -1,0 +1,8 @@
+{
+    "scopes": {
+        "google": [
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://mail.google.com/"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+
+  "minimum-stability": "dev",
+    "prefer-stable": true,
+
+  "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Brainlabs-Digital/sheetsy"
+        }
+    ]
+    "autoload": {
+        "psr-4": {
+            "Brainlabs\\SA360ConversionLagCalculator\\": "src/Brainlabs/SA360ConversionLagCalculator"
+        },
+    "require": {
+        "brainlabs/sheetsy": "^0.22.0",
+    }
+}
