@@ -1,19 +1,30 @@
 {
-
+  "config": {
+    "vendor-dir": "../vendor"
+  },
   "minimum-stability": "dev",
     "prefer-stable": true,
+    "name": "Brainlabs/SA360ConversionLagCalculator",
 
-  "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Brainlabs-Digital/sheetsy"
-        }
-    ]
     "autoload": {
-        "psr-4": {
-            "Brainlabs\\SA360ConversionLagCalculator\\": "src/Brainlabs/SA360ConversionLagCalculator"
-        },
+	    "psr-4": {
+		    "Brainlabs\\SA360ConversionLagCalculator\\": "src/Brainlabs/SA360ConversionLagCalculator"
+	    }
+    },
     "require": {
-        "brainlabs/sheetsy": "^0.22.0",
-    }
+	    "brainlabs/sheetsy": "^0.24",
+	    "guzzlehttp/guzzle": "~6.0",
+	    "google/apiclient": "2.*",
+	    "brainlabs/credulous": "dev-master"
+    },
+    "repositories": [
+	    {
+		    "type": "vcs",
+		    "url": "https://github.com/Brainlabs-Digital/sheetsy"
+	    },
+	    {
+		    "type": "git",
+		    "url": "https://github.com/Brainlabs-Digital/credulous"
+	    }
+    ]
 }

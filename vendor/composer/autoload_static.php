@@ -6,9 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit48e1b2080427be38d89814d515d8ee34
 {
+    public static $prefixLengthsPsr4 = array (
+        'B' => 
+        array (
+            'Brainlabs\\SA360ConversionLagCalculator\\' => 39,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Brainlabs\\SA360ConversionLagCalculator\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Brainlabs/SA360ConversionLagCalculator',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit48e1b2080427be38d89814d515d8ee34::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit48e1b2080427be38d89814d515d8ee34::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

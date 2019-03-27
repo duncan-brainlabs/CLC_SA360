@@ -1,6 +1,5 @@
 {
-    // Advertiser ID below is from Anglian's AHI PPC
-    "advertiser_id": "21700000001515217",
+    "creds": "dLWbo2APRHRKCffoYIy2GIit",
     "agency_id": "20700000001001020",
-    "ss_id": "1ptmrVt-ZNUCfFmes6CWN6FzgwS_-om_xDvbtEOqixc0"
+    "input_ss_url": "https://docs.google.com/spreadsheets/d/18BXIQDL7vkmn9dXqpW7szO7oInqsqnu_Vpo-xJ4TZeg"
 }

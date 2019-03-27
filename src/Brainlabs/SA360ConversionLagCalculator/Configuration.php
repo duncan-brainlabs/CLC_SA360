@@ -5,10 +5,16 @@ namespace Brainlabs\SA360ConversionLagCalculator;
 use Exception;
 
 class Configuration {
+    /** @var string[] $config The decoded contents of the config.json */
     private $config;
 
-    public function __construct($src) {
-        clearstatcahe();
+    /**
+     * @param string $src Location of the config file
+     * @return void
+     */
+    public function __construct($src) 
+    {
+        clearstatcache();
         if (!is_readable($src)) {
             throw new Exception("no such file" .$src);
         }
@@ -20,24 +26,40 @@ class Configuration {
         $this->config = $config;
     }
 
-    private function get($key) {
+    /**
+     * @param string $key
+     * @return string
+     */
+    private function get($key) 
+    {
         if (!is_array($this->config)) {
             throw new Exception("missing key: " . $key);
         }
         return $this->config[$key];
     }
 
-    public function getAdvertiserId() {
-        return $this->get("advertiser_id");
-    }
-
-    public function getAgencyId() {
+    /**
+     * @return string
+     */
+    public function getAgencyId() 
+    {
         return $this->get("agency_id");
     }
 
-    public function getSsId() {
-        return $this->get("ss_id");
+    /**
+     * @return string
+     */
+    public function getInputSsUrl() 
+    {
+        return $this->get("input_ss_url");
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreds() 
+    {
+        return $this->get("creds");
     }
 }
-
 ?>

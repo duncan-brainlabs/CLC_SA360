@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Brainlabs\\SA360ConversionLagCalculator\\' => array($baseDir . '/src/Brainlabs/SA360ConversionLagCalculator'),
 );
