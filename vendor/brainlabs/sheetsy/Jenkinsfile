@@ -1,0 +1,23 @@
+#!/usr/bin/env groovy
+
+node {
+	// Clean up docker.
+	sh "docker system prune --force"
+	stage('Checkout') {
+		checkout scm
+	}
+	stage('Build') {
+		sh "make build"
+	}
+	stage('Test') {
+		withCredentials([file(credentialsId: 'sheetsy-creds', variable: 'SHEETSY_CREDS_JENKINS'), ]) {
+			sh """\
+			SHEETSY_CREDS_JENKINS2='${env.SHEETSY_CREDS_JENKINS}' \
+			make jenkins-test
+			"""
+		}
+	}
+	stage('Lint') {
+		sh "make jenkins-lint"
+	}
+}

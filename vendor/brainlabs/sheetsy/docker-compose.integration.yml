@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  sheetsy:
+    secrets:
+      - sheetsy_credentials
+    environment:
+      - SHEETSY_CREDS=/run/secrets/sheetsy_credentials
+      - SHEETSY_SPREADSHEET_ID=1blu9jAtjOpC_aTnCVlKcpFTzgB1gXwBJZgVZE9med2o
+      - SHEETSY_ANOTHER_SPREADSHEET_ID=1yq8EtLQMXVhFiIjoDkKHr38gSsesdGpq63frbQvlFdw
+
+secrets:
+  sheetsy_credentials:
+    file: "$SHEETSY_CREDS_JENKINS2"

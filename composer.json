@@ -1,7 +1,4 @@
 {
-  "config": {
-    "vendor-dir": "../vendor"
-  },
   "minimum-stability": "dev",
     "prefer-stable": true,
     "name": "Brainlabs/SA360ConversionLagCalculator",

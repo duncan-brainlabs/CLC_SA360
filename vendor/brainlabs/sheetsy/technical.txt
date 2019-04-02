@@ -1,0 +1,97 @@
+Technical specifications for Sheetsy
+====================================
+
+ryutaro@brainlabsdigital.com
+
+
+Overview
+----------
+
+We'll base the design on the SpreadsheetApp library from Google Scripts where
+it makes sense.
+
+
+Methodology
+------------
+
+Each commit to this library will be checked against phan.
+
+
+Non-functional requirements
+-----------------------------
+
+This library will not be concurrency-safe. This library should NOT be used for
+anything mission-critical.
+
+All API calls will be made with exponential backoff.
+
+Each getter is an API call. If this is too slow, we can do some caching.
+
+We won't batch setters to keep things simple. When performance becomes an
+issue, we can batch stuff and provide a push() method.
+
+
+Design
+-------
+
+The Sheetsy class corresponds to SpreadsheetApp.
+
+class Sheetsy {
+	getSpreadsheetById(id: string) -> Spreadsheet;
+
+	getSpreadsheetByUrl(url: string) -> Spreadseet;
+
+	// methods to call the API are done already.
+}
+
+Spreadsheet and Sheet will wrap around Google's Sheets library classes. We'll
+try to keep it in sync with the actual sheet, but we won't make any guarantees
+or try to use locks. 
+
+We'll be lazy and expose Google Sheets library's response classes and
+unretryable exceptions. In the future, we may wrap these as well.
+
+class Spreadsheet {
+	private Sheetsy;
+	private string spreadsheetId;
+	private Google_Service_Sheets_Spreadsheet;
+
+	getSheetByName(name: string) -> Sheet;
+
+	// Download properties and update local properties.
+	public pull(void) -> Google_Service_Sheets_Spreadsheet;
+
+	// Make a sheet. This is useful for writing tests.
+	public makeSheet(name: string) -> Sheet;
+}
+
+class Sheet {
+	private Sheetsy;
+	private string spreadsheetId;
+	private string sheetId;
+	private Google_Service_Sheets_Sheet;
+
+	// We will increase the dimension of the sheet as necessary to make the
+	// values fit.
+	// We'll use the spreadsheets.values service instead of the spreadsheets
+	// (batch update) to set cell values, so we don't have to worry about the
+	// type of values. This requires us to translate Rect to A1 notation.
+	setValues(values: mixed[][], rect: Rect) ->
+		Google_Service_Sheets_UpdateValuesReponse;
+
+	appendDimension(dimension: string, dimensionNum: int) ->
+		Google_Service_Sheets_BatchUpdateSpreadsheetResponse;
+
+	// Download properties and update local properties.
+	public pull(void) -> Google_Service_Sheets_Sheet;
+}
+
+class Rect {
+	private int row;
+	private int column;
+	private int height;
+	private int width;
+
+	// Emit the range in A1 notation.
+	public toA1(void) -> string;
+}

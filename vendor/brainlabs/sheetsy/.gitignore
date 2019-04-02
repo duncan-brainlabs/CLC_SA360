@@ -1,0 +1,8 @@
+vendor
+credentials
+tags
+*.swp
+tmp
+trash
+docs
+.DS_Store

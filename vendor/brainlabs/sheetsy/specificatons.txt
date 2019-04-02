@@ -1,0 +1,19 @@
+Specifications for Sheetsy
+==========================
+
+ryutaro@brainlabsdigital.com
+
+
+Overview
+-------
+
+This document is incomplete and subject to change. Sheetsy is a convenient
+wrapper around Google's Sheets API.
+
+
+Features
+----------
+
+* Each get call will be an API call.
+* Set the values of some range on a sheet.
+* Create charts
